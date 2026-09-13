@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="home_primary">#08B68F</color>
+    <color name="home_primary_dark">#029B79</color>
+    <color name="home_primary_light">#20C8A5</color>
+    <color name="home_mint_background">#E8F8F4</color>
+    <color name="home_background">#FFFFFF</color>
+    <color name="home_card_background">#FFFFFF</color>
+    <color name="home_card_border">#E0E2E4</color>
+    <color name="home_text_primary">#1F2022</color>
+    <color name="home_text_secondary">#777A7E</color>
+    <color name="home_expense">#FF5350</color>
+    <color name="home_blue">#377EE8</color>
+    <color name="home_red">#FF514F</color>
+    <color name="home_divider">#ECEDEF</color>
+</resources>

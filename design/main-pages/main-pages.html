@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SmartWallet 主页面</title>
+  <style>
+    :root {
+      --mint: #20c9a6;
+      --mint-dark: #0ba987;
+      --mint-soft: #e8f9f5;
+      --bg: #f8faf9;
+      --card: #ffffff;
+      --text: #333333;
+      --muted: #888888;
+      --line: #e7ecea;
+      --red: #ff6b6b;
+      --blue: #4e86e8;
+      --amber: #f3ad3d;
+      --purple: #8c6ce7;
+      --shadow: 0 4px 14px rgba(31, 72, 63, .08);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1080px; height: 2400px; overflow: hidden; background: var(--bg); }
+    body { font-family: "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif; color: var(--text); }
+    .screen {
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 360px;
+      height: 800px;
+      transform: scale(3);
+      transform-origin: 0 0;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .hidden { display: none; }
+    .status {
+      height: 26px;
+      padding: 8px 16px 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: 700;
+      color: #171717;
+    }
+    .sys { letter-spacing: 2px; }
+    main { padding: 6px 14px 84px; height: 774px; overflow: hidden; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; margin: 3px 2px 15px; }
+    .topbar h1 { margin: 0; font-size: 23px; line-height: 1.2; font-weight: 700; }
+    .greeting h1 { margin: 0; font-size: 22px; }
+    .greeting p { margin: 5px 0 0; color: var(--muted); font-size: 11px; }
+    .actions { display: flex; align-items: center; gap: 9px; }
+    .round {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: grid; place-items: center; background: #fff; box-shadow: var(--shadow);
+      font-size: 15px;
+    }
+    .avatar {
+      width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+      background: #dff6f0; font-size: 20px;
+    }
+    .card { background: var(--card); border-radius: 16px; box-shadow: var(--shadow); }
+    .section-title {
+      display: flex; align-items: center; justify-content: space-between;
+      margin: 15px 2px 9px;
+    }
+    .section-title h2 { margin: 0; font-size: 16px; }
+    .section-title a { color: var(--mint-dark); font-size: 11px; }
+    .nav {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 66px;
+      background: rgba(255,255,255,.98); border-top: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-around;
+      padding: 6px 11px 5px; z-index: 5;
+    }
+    .nav-item { width: 54px; text-align: center; color: #777; font-size: 10px; }
+    .nav-item .ico { display: block; font-size: 18px; line-height: 24px; font-weight: 700; }
+    .nav-item.active { color: var(--mint-dark); font-weight: 700; }
+    .add {
+      width: 50px; height: 50px; border-radius: 50%; background: var(--mint);
+      color: white; display: grid; place-items: center; font-size: 31px;
+      box-shadow: 0 7px 18px rgba(32,201,166,.35); transform: translateY(-14px);
+    }
+    .money.expense { color: var(--red); }
+    .money.income { color: var(--mint-dark); }
+
+    /* Home */
+    .overview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+    .metric { padding: 11px 8px; min-height: 65px; }
+    .metric small { color: var(--muted); font-size: 9px; display: block; }
+    .metric strong { display: block; margin-top: 8px; font-size: 14px; color: var(--mint-dark); }
+    .balance {
+      margin-top: 10px; padding: 17px 17px 14px; color: white;
+      background: linear-gradient(135deg, #20c9a6, #0dbb95); border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(32,201,166,.23);
+    }
+    .balance small { font-size: 11px; opacity: .9; }
+    .balance .amount { font-size: 31px; line-height: 1.2; font-weight: 800; margin: 5px 0 13px; }
+    .balance-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,.25); padding-top: 10px; }
+    .balance-grid div:last-child { border-left: 1px solid rgba(255,255,255,.28); padding-left: 20px; }
+    .balance-grid b { display: block; margin-top: 3px; font-size: 13px; }
+    .chart-card { padding: 13px 13px 10px; }
+    .chart-head { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; }
+    .legend { color: var(--muted); font-size: 9px; font-weight: 400; }
+    .chart { width: 100%; height: 91px; margin-top: 7px; }
+    .bill-card { padding: 1px 12px; }
+    .bill-row { min-height: 49px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+    .bill-row:last-child { border-bottom: 0; }
+    .cat {
+      width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center;
+      color: white; font-size: 14px; margin-right: 10px;
+    }
+    .cat.red { background: var(--red); } .cat.blue { background: var(--blue); }
+    .cat.green { background: var(--mint-dark); } .cat.amber { background: var(--amber); }
+    .cat.purple { background: var(--purple); }
+    .bill-info { flex: 1; }
+    .bill-info b { display: block; font-size: 12px; }
+    .bill-info small { color: var(--muted); font-size: 9px; }
+    .bill-amount { text-align: right; font-size: 12px; font-weight: 700; }
+    .bill-amount small { display: block; color: var(--muted); font-size: 8px; margin-top: 3px; font-weight: 400; }
+
+    /* Bills */
+    .search {
+      height: 38px; border-radius: 12px; background: #fff; border: 1px solid var(--line);
+      display: flex; align-items: center; gap: 8px; padding: 0 12px; color: #a0a7a4; font-size: 11px;
+    }
+    .chips { display: flex; gap: 7px; margin: 10px 0; }
+    .chip { padding: 6px 11px; border-radius: 16px; background: #fff; border: 1px solid var(--line); font-size: 9px; color: #666; }
+    .chip.active { color: white; background: var(--mint); border-color: var(--mint); }
+    .month-summary { padding: 13px 14px; }
+    .month-title { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+    .month-values { margin-top: 11px; display: grid; grid-template-columns: repeat(3,1fr); }
+    .month-values div { border-right: 1px solid var(--line); padding-left: 10px; }
+    .month-values div:first-child { padding-left: 0; }
+    .month-values div:last-child { border-right: 0; }
+    .month-values small { display: block; color: var(--muted); font-size: 8px; }
+    .month-values b { display: block; margin-top: 4px; font-size: 12px; }
+    .day-head { display: flex; justify-content: space-between; margin: 13px 3px 6px; font-size: 10px; color: #666; }
+    .day-head b { color: var(--text); font-size: 12px; }
+    .list-card { padding: 0 11px; }
+    .list-card .bill-row { min-height: 51px; }
+
+    /* Stats */
+    .period {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #fff; border-radius: 12px; padding: 10px 12px; box-shadow: var(--shadow); font-size: 12px;
+    }
+    .stats-hero { margin-top: 10px; padding: 13px; display: grid; grid-template-columns: repeat(3,1fr); }
+    .stats-hero div { text-align: center; border-right: 1px solid var(--line); }
+    .stats-hero div:last-child { border-right: 0; }
+    .stats-hero small { display: block; color: var(--muted); font-size: 8px; }
+    .stats-hero b { display: block; margin-top: 5px; font-size: 13px; }
+    .donut-card { padding: 13px; margin-top: 11px; }
+    .donut-grid { display: grid; grid-template-columns: 145px 1fr; align-items: center; }
+    .donut-wrap { position: relative; width: 130px; height: 130px; }
+    .donut {
+      position: absolute; inset: 12px; border-radius: 50%;
+      background: conic-gradient(var(--mint) 0 35%, var(--blue) 35% 55%, var(--amber) 55% 70%, var(--red) 70% 100%);
+    }
+    .donut:after { content:""; position:absolute; inset: 22px; border-radius:50%; background:#fff; }
+    .donut-center { position: absolute; inset: 0; display: grid; place-items: center; text-align:center; z-index:2; font-size:9px; color:var(--muted); }
+    .donut-center b { display:block; font-size:15px; color:var(--text); }
+    .legend-list { font-size: 10px; line-height: 2.05; }
+    .dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:6px; }
+    .trend-card { margin-top: 11px; padding: 13px; }
+    .seg { display:flex; background:#eef2f0; border-radius:10px; padding:3px; }
+    .seg span { padding:4px 11px; border-radius:8px; font-size:9px; color:#777; }
+    .seg .on { background:#fff; color:var(--mint-dark); box-shadow:0 2px 6px rgba(0,0,0,.06); }
+    .insight { margin-top: 11px; padding: 12px 14px; display:flex; gap:10px; align-items:center; }
+    .insight .spark { width:34px; height:34px; border-radius:11px; background:var(--mint-soft); color:var(--mint-dark); display:grid; place-items:center; font-size:18px; }
+    .insight b { display:block; font-size:11px; } .insight small { color:var(--muted); font-size:9px; }
+
+    /* Profile */
+    .profile {
+      padding: 15px; display:flex; align-items:center; gap:12px; margin-bottom:12px;
+    }
+    .profile .avatar { width:54px; height:54px; font-size:27px; }
+    .profile-info { flex:1; }
+    .profile-info b { font-size:16px; } .profile-info small { display:block; color:var(--muted); font-size:9px; margin-top:4px; }
+    .outline-btn { border:1px solid var(--mint); color:var(--mint-dark); border-radius:12px; padding:6px 10px; font-size:9px; }
+    .mini-stats { display:grid; grid-template-columns:repeat(3,1fr); padding:12px 0; margin-bottom:12px; }
+    .mini-stats div { text-align:center; border-right:1px solid var(--line); }
+    .mini-stats div:last-child { border-right:0; }
+    .mini-stats b { display:block; color:var(--mint-dark); font-size:14px; }
+    .mini-stats small { color:var(--muted); font-size:8px; }
+    .menu { padding: 0 13px; margin-bottom: 11px; }
+    .menu-row { height: 49px; display:flex; align-items:center; border-bottom:1px solid var(--line); }
+    .menu-row:last-child { border-bottom:0; }
+    .menu-icon { width:30px; height:30px; border-radius:10px; background:var(--mint-soft); color:var(--mint-dark); display:grid; place-items:center; margin-right:10px; font-size:14px; }
+    .menu-row b { flex:1; font-size:12px; font-weight:500; }
+    .menu-row span { color:#aaa; font-size:13px; }
+    .backup { padding:14px; margin-bottom:11px; display:flex; align-items:center; gap:11px; }
+    .backup-art { width:42px; height:42px; border-radius:13px; background:var(--mint-soft); display:grid; place-items:center; color:var(--mint-dark); font-size:20px; }
+    .backup b { display:block; font-size:11px; } .backup small { color:var(--muted); font-size:8px; }
+    .backup .outline-btn { margin-left:auto; }
+  </style>
+</head>
+<body>
+  <section class="screen" data-screen="home">
+    <div class="status"><span>9:30</span><span class="sys">● ◢ ▮</span></div>
+    <main>
+      <div class="topbar">
+        <div class="greeting"><h1>早上好，林晓 👋</h1><p>今天也要理性消费</p></div>
+        <div class="actions"><div class="avatar">👤</div><div class="round">♢</div></div>
+      </div>
+      <div class="overview">
+        <div class="metric card"><small>今日消费</small><strong>¥85.00</strong></div>
+        <div class="metric card"><small>今日收入</small><strong>¥0.00</strong></div>
+        <div class="metric card"><small>剩余预算</small><strong>¥1560</strong></div>
+      </div>
+      <div class="balance"><small>本月余额</small><div class="amount">¥8560</div><div class="balance-grid"><div><small>收入</small><b>¥12000</b></div><div><small>支出</small><b>¥3440</b></div></div></div>
+      <div class="section-title"><h2>近7日消费趋势</h2><a>收支分析 ›</a></div>
+      <div class="chart-card card">
+        <div class="chart-head"><span>消费趋势</span><span class="legend">● 收入　<span style="color:#ff6b6b">● 支出</span></span></div>
+        <svg class="chart" viewBox="0 0 320 92">
+          <path d="M10 75H310M10 48H310M10 21H310" stroke="#edf1ef" stroke-width="1"/>
+          <path d="M12 66 L60 35 L108 56 L156 31 L204 57 L252 43 L308 24" fill="none" stroke="#20c9a6" stroke-width="3"/>
+          <path d="M12 78 L60 58 L108 74 L156 55 L204 71 L252 75 L308 59" fill="none" stroke="#ff6b6b" stroke-width="2.5"/>
+          <g fill="#888" font-size="7"><text x="8" y="89">7/9</text><text x="56" y="89">7/10</text><text x="105" y="89">7/11</text><text x="153" y="89">7/12</text><text x="201" y="89">7/13</text><text x="249" y="89">7/14</text><text x="296" y="89">7/15</text></g>
+        </svg>
+      </div>
+      <div class="section-title"><h2>最近账单</h2><a>查看全部</a></div>
+      <div class="bill-card card">
+        <div class="bill-row"><div class="cat red">餐</div><div class="bill-info"><b>午餐</b><small>餐饮</small></div><div class="bill-amount expense">-¥35<small>今天 12:30</small></div></div>
+        <div class="bill-row"><div class="cat blue">行</div><div class="bill-info"><b>地铁</b><small>交通</small></div><div class="bill-amount expense">-¥6<small>今天 08:15</small></div></div>
+        <div class="bill-row"><div class="cat green">收</div><div class="bill-info"><b>工资</b><small>收入</small></div><div class="bill-amount income">+¥8000<small>昨天 09:00</small></div></div>
+      </div>
+    </main>
+    <nav class="nav"><div class="nav-item active"><span class="ico">⌂</span>首页</div><div class="nav-item"><span class="ico">▤</span>账单</div><div class="add">＋</div><div class="nav-item"><span class="ico">◔</span>统计</div><div class="nav-item"><span class="ico">♙</span>我的</div></nav>
+  </section>
+
+  <section class="screen hidden" data-screen="bills">
+    <div class="status"><span>9:30</span><span class="sys">● ◢ ▮</span></div>
+    <main>
+      <div class="topbar"><h1>账单</h1><div class="actions"><div class="round">⌕</div><div class="round">□</div></div></div>
+      <div class="search"><span>⌕</span><span>搜索账单</span></div>
+      <div class="chips"><span class="chip active">本月</span><span class="chip">全部分类⌄</span><span class="chip">收支类型⌄</span></div>
+      <div class="month-summary card">
+        <div class="month-title"><span>2026年7月</span><span style="color:#aaa">⌄</span></div>
+        <div class="month-values"><div><small>收入</small><b class="income">¥12000</b></div><div><small>支出</small><b class="expense">¥3440</b></div><div><small>结余</small><b>¥8560</b></div></div>
+      </div>
+      <div class="day-head"><b>7月15日 周三</b><span>支出 ¥41</span></div>
+      <div class="list-card card">
+        <div class="bill-row"><div class="cat red">餐</div><div class="bill-info"><b>午餐</b><small>餐饮 · 12:30</small></div><div class="bill-amount expense">-¥35</div></div>
+        <div class="bill-row"><div class="cat blue">行</div><div class="bill-info"><b>地铁</b><small>交通 · 08:15</small></div><div class="bill-amount expense">-¥6</div></div>
+      </div>
+      <div class="day-head"><b>7月14日 周二</b><span>结余 +¥7732</span></div>
+      <div class="list-card card">
+        <div class="bill-row"><div class="cat green">收</div><div class="bill-info"><b>工资</b><small>工资 · 09:00</small></div><div class="bill-amount income">+¥8000</div></div>
+        <div class="bill-row"><div class="cat amber">购</div><div class="bill-info"><b>超市购物</b><small>购物 · 19:45</small></div><div class="bill-amount expense">-¥268</div></div>
+      </div>
+      <div class="day-head"><b>7月13日 周一</b><span>支出 ¥58</span></div>
+      <div class="list-card card"><div class="bill-row"><div class="cat purple">娱</div><div class="bill-info"><b>电影</b><small>娱乐 · 20:10</small></div><div class="bill-amount expense">-¥58</div></div></div>
+    </main>
+    <nav class="nav"><div class="nav-item"><span class="ico">⌂</span>首页</div><div class="nav-item active"><span class="ico">▤</span>账单</div><div class="add">＋</div><div class="nav-item"><span class="ico">◔</span>统计</div><div class="nav-item"><span class="ico">♙</span>我的</div></nav>
+  </section>
+
+  <section class="screen hidden" data-screen="stats">
+    <div class="status"><span>9:30</span><span class="sys">● ◢ ▮</span></div>
+    <main>
+      <div class="topbar"><h1>统计分析</h1><div class="round">⇩</div></div>
+      <div class="period"><span>‹</span><b>2026年7月</b><span>›</span></div>
+      <div class="stats-hero card"><div><small>总收入</small><b class="income">¥12000</b></div><div><small>总支出</small><b class="expense">¥3440</b></div><div><small>结余</small><b>¥8560</b></div></div>
+      <div class="donut-card card">
+        <div class="chart-head"><span>消费分类占比</span><span class="legend">本月</span></div>
+        <div class="donut-grid">
+          <div class="donut-wrap"><div class="donut"></div><div class="donut-center"><span>总支出<b>¥3440</b></span></div></div>
+          <div class="legend-list"><div><i class="dot" style="background:#20c9a6"></i>餐饮　35%　¥1204</div><div><i class="dot" style="background:#4e86e8"></i>交通　20%　¥688</div><div><i class="dot" style="background:#f3ad3d"></i>购物　15%　¥516</div><div><i class="dot" style="background:#ff6b6b"></i>其他　30%　¥1032</div></div>
+        </div>
+      </div>
+      <div class="trend-card card">
+        <div class="chart-head"><span>消费趋势</span><div class="seg"><span class="on">日</span><span>月</span><span>年</span></div></div>
+        <svg class="chart" viewBox="0 0 320 92">
+          <path d="M10 75H310M10 48H310M10 21H310" stroke="#edf1ef" stroke-width="1"/>
+          <path d="M12 66 L60 37 L108 55 L156 29 L204 57 L252 43 L308 23" fill="none" stroke="#20c9a6" stroke-width="3"/>
+          <path d="M12 66 L60 37 L108 55 L156 29 L204 57 L252 43 L308 23 L308 78 L12 78Z" fill="rgba(32,201,166,.10)"/>
+          <g fill="#888" font-size="7"><text x="8" y="89">7/9</text><text x="56" y="89">7/10</text><text x="105" y="89">7/11</text><text x="153" y="89">7/12</text><text x="201" y="89">7/13</text><text x="249" y="89">7/14</text><text x="296" y="89">7/15</text></g>
+        </svg>
+      </div>
+      <div class="section-title"><h2>消费洞察</h2><a>查看详情</a></div>
+      <div class="insight card"><div class="spark">✦</div><div><b>本周消费比上周下降 20%</b><small>餐饮支出减少最多，继续保持</small></div></div>
+      <div class="insight card"><div class="spark">◎</div><div><b>预算使用正常</b><small>本月剩余预算 ¥1560</small></div></div>
+    </main>
+    <nav class="nav"><div class="nav-item"><span class="ico">⌂</span>首页</div><div class="nav-item"><span class="ico">▤</span>账单</div><div class="add">＋</div><div class="nav-item active"><span class="ico">◔</span>统计</div><div class="nav-item"><span class="ico">♙</span>我的</div></nav>
+  </section>
+
+  <section class="screen hidden" data-screen="profile">
+    <div class="status"><span>9:30</span><span class="sys">● ◢ ▮</span></div>
+    <main>
+      <div class="topbar"><h1>我的</h1><div class="round">⚙</div></div>
+      <div class="profile card"><div class="avatar">👤</div><div class="profile-info"><b>林晓</b><small>linxiao@example.com</small></div><div class="outline-btn">编辑资料</div></div>
+      <div class="mini-stats card"><div><b>28</b><small>记账天数</small></div><div><b>126</b><small>本月账单</small></div><div><b>68%</b><small>预算进度</small></div></div>
+      <div class="backup card"><div class="backup-art">☁</div><div><b>数据已安全同步</b><small>上次同步：今天 09:20</small></div><div class="outline-btn">立即同步</div></div>
+      <div class="section-title"><h2>账户与偏好</h2></div>
+      <div class="menu card">
+        <div class="menu-row"><div class="menu-icon">人</div><b>个人信息</b><span>›</span></div>
+        <div class="menu-row"><div class="menu-icon">铃</div><b>通知设置</b><span>›</span></div>
+        <div class="menu-row"><div class="menu-icon">月</div><b>主题设置</b><span>跟随系统　›</span></div>
+      </div>
+      <div class="section-title"><h2>数据与安全</h2></div>
+      <div class="menu card">
+        <div class="menu-row"><div class="menu-icon">云</div><b>数据备份</b><span>›</span></div>
+        <div class="menu-row"><div class="menu-icon">图</div><b>文件管理</b><span>›</span></div>
+        <div class="menu-row"><div class="menu-icon">锁</div><b>修改密码</b><span>›</span></div>
+      </div>
+      <div class="section-title"><h2>其他</h2></div>
+      <div class="menu card">
+        <div class="menu-row"><div class="menu-icon">i</div><b>关于 App</b><span>›</span></div>
+      </div>
+    </main>
+    <nav class="nav"><div class="nav-item"><span class="ico">⌂</span>首页</div><div class="nav-item"><span class="ico">▤</span>账单</div><div class="add">＋</div><div class="nav-item"><span class="ico">◔</span>统计</div><div class="nav-item active"><span class="ico">♙</span>我的</div></nav>
+  </section>
+  <script>
+    const selected = new URLSearchParams(location.search).get("screen") || "home";
+    document.querySelectorAll(".screen").forEach(el => el.classList.toggle("hidden", el.dataset.screen !== selected));
+  </script>
+</body>
+</html>

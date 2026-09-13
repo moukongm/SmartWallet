@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="30dp"
+    android:height="30dp"
+    android:viewportWidth="30"
+    android:viewportHeight="30">
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M5,5H13V13H5ZM17,5H25V13H17ZM5,17H13V25H5ZM17,17H25V25H17Z"
+        android:strokeColor="@color/profile_page_icon"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.8" />
+</vector>

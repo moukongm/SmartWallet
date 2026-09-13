@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    android:label="@string/app_name"
+    app:startDestination="@id/homeFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.home.ui.HomeFragment"
+        android:label="@string/app_nav_home"
+        tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/billFragment"
+        android:name="com.bill.ui.BillFragment"
+        android:label="@string/app_nav_bill"
+        tools:layout="@layout/bill_fragment">
+        <deepLink
+            app:uri="smartwallet://bill/list"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/addBillFragment"
+        android:name="com.bill.ui.AddBillFragment"
+        android:label="@string/app_nav_add"
+        tools:layout="@layout/bill_fragment_add">
+        <argument
+            android:name="billId"
+            android:defaultValue="-1L"
+            app:argType="long"/>
+        <deepLink
+            app:uri="smartwallet://bill/edit/{billId}"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.statistics.ui.StatisticsFragment"
+        android:label="@string/app_nav_statistics"
+        tools:layout="@layout/statistics_fragment" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.profile.ui.ProfileFragment"
+        android:label="@string/app_nav_profile"
+        tools:layout="@layout/profile_fragment" />
+
+    <fragment
+        android:id="@+id/budgetManagementFragment"
+        android:name="com.budget.ui.BudgetManagementFragment"
+        android:label="@string/budget_page_title"
+        tools:layout="@layout/budget_fragment_management">
+        <deepLink
+            app:uri="smartwallet://budget/management" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryManagementFragment"
+        android:name="com.profile.ui.CategoryManagementFragment"
+        android:label="@string/profile_category_title"
+        tools:layout="@layout/profile_fragment_category_management" >
+        <deepLink
+            app:uri="smartwallet://profile/category-management"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.profile.ui.PersonalInfoFragment"
+        android:label="@string/profile_personal_title"
+        tools:layout="@layout/profile_fragment_personal_info">
+        <deepLink
+            app:uri="smartwallet://profile/personal-info" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notificationSettingsFragment"
+        android:name="com.profile.ui.NotificationSettingsFragment"
+        android:label="@string/profile_notification_title"
+        tools:layout="@layout/profile_fragment_notification">
+        <deepLink
+            app:uri="smartwallet://profile/notification" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dataBackupFragment"
+        android:name="com.profile.ui.DataBackupFragment"
+        android:label="@string/profile_backup_title"
+        tools:layout="@layout/profile_fragment_backup">
+        <deepLink
+            app:uri="smartwallet://profile/backup" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fileManagementFragment"
+        android:name="com.profile.ui.FileManagementFragment"
+        android:label="@string/profile_files_title"
+        tools:layout="@layout/profile_fragment_files">
+        <deepLink
+            app:uri="smartwallet://profile/files" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.profile.ui.AboutFragment"
+        android:label="@string/profile_about_title"
+        tools:layout="@layout/profile_fragment_about">
+        <deepLink
+            app:uri="smartwallet://profile/about" />
+    </fragment>
+
+</navigation>

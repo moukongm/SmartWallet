@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="statistics_page_primary">#0EB58E</color>
+    <color name="statistics_page_primary_soft">#E8F8F4</color>
+    <color name="statistics_page_expense">#FF625C</color>
+    <color name="statistics_page_expense_soft">#FFF0EF</color>
+    <color name="statistics_page_orange">#FFA726</color>
+    <color name="statistics_page_blue">#4F8ADF</color>
+    <color name="statistics_page_text_primary">#1F2124</color>
+    <color name="statistics_page_text_secondary">#74777D</color>
+    <color name="statistics_page_border">#E3E6E8</color>
+    <color name="statistics_page_grid">#E7EAEC</color>
+    <color name="statistics_page_chip_background">#F3F5F5</color>
+    <color name="statistics_page_background">#FFFFFF</color>
+
+    <dimen name="statistics_page_horizontal_margin">18dp</dimen>
+    <dimen name="statistics_page_title_size">28sp</dimen>
+    <dimen name="statistics_page_card_radius">14dp</dimen>
+
+    <string name="statistics_page_title">统计分析</string>
+    <string name="statistics_page_month">2026年7月</string>
+    <string name="statistics_page_calendar_description">选择月份</string>
+    <string name="statistics_page_total_income">总收入</string>
+    <string name="statistics_page_total_expense">总支出</string>
+    <string name="statistics_page_balance">结余</string>
+    <string name="statistics_page_income_amount">￥12000</string>
+    <string name="statistics_page_expense_amount">￥3440</string>
+    <string name="statistics_page_balance_amount">￥8560</string>
+    <string name="statistics_page_budget_status">预算使用正常</string>
+    <string name="statistics_page_budget_remaining">剩余预算  ￥1560</string>
+    <string name="statistics_page_budget_normal">预算使用正常</string>
+    <string name="statistics_page_budget_over">本月预算已超支</string>
+    <string name="statistics_page_budget_remaining_format">剩余预算 %1$s</string>
+    <string name="statistics_page_budget_over_format">已超预算 %1$s</string>
+    <string name="statistics_page_budget_entry_description">进入预算管理</string>
+    <string name="statistics_page_income_icon_description">收入</string>
+    <string name="statistics_page_expense_icon_description">支出</string>
+    <string name="statistics_page_balance_icon_description">结余</string>
+    <string name="statistics_page_category_title">消费分类占比</string>
+    <string name="statistics_page_food">餐饮</string>
+    <string name="statistics_page_traffic">交通</string>
+    <string name="statistics_page_shopping">购物</string>
+    <string name="statistics_page_other">其他</string>
+    <string name="statistics_page_food_ratio">35%</string>
+    <string name="statistics_page_traffic_ratio">20%</string>
+    <string name="statistics_page_shopping_ratio">15%</string>
+    <string name="statistics_page_other_ratio">30%</string>
+    <string name="statistics_page_trend_title">消费趋势</string>
+    <string name="statistics_page_day">日</string>
+    <string name="statistics_page_month_tab">月</string>
+    <string name="statistics_page_year">年</string>
+    <string name="statistics_page_value_unavailable">--</string>
+    <string name="statistics_page_no_category_data">暂无分类支出数据</string>
+    <string name="statistics_page_no_trend_data">暂无消费趋势数据</string>
+    <string name="statistics_page_select_month">选择统计月份</string>
+    <string name="statistics_page_month_format">%1$d年%2$d月</string>
+    <string name="statistics_page_ratio_format">%1$d%%</string>
+</resources>

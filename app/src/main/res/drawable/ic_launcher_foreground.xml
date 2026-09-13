@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 钱包投影 -->
+    <path
+        android:fillColor="#26006452"
+        android:pathData="M34,37H71C79,37 84,42 84,50V74C84,82 79,87 71,87H34C26,87 21,82 21,74V50C21,42 26,37 34,37Z" />
+
+    <!-- 白色钱包主体 -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M33,34H70C77,34 81,39 81,46V48H70C63,48 58,53 58,60C58,67 63,72 70,72H81V74C81,81 77,84 70,84H33C26,84 22,80 22,73V45C22,38 26,34 33,34Z" />
+
+    <!-- 钱包封口 -->
+    <path
+        android:fillColor="#0D987C"
+        android:pathData="M70,48H82C86,48 88,51 88,55V65C88,69 86,72 82,72H70C62,72 57,67 57,60C57,53 62,48 70,48Z" />
+
+    <!-- 记账硬币 -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M73,53A7,7 0,1 0,73 67A7,7 0,1 0,73 53Z" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M69.5,56L73,59L76.5,56M73,59V65M69.5,60.5H76.5"
+        android:strokeColor="#0D987C"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.8" />
+
+    <!-- 青色叶片，呼应“青账” -->
+    <path
+        android:fillColor="#C9FBEA"
+        android:pathData="M53,34C57,22 68,16 83,19C81,31 71,39 57,37C61,31 68,25 78,21C68,24 60,28 53,34Z" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M56,36C63,29 70,24 79,21"
+        android:strokeColor="#0D987C"
+        android:strokeLineCap="round"
+        android:strokeWidth="1.5" />
+
+</vector>

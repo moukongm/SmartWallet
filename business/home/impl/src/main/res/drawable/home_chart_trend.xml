@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="700dp"
+    android:height="210dp"
+    android:viewportWidth="700"
+    android:viewportHeight="210">
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M8,20H692M8,75H692M8,130H692M8,185H692"
+        android:strokeColor="#E8EAEC"
+        android:strokeWidth="1" />
+    <path
+        android:fillAlpha="0.12"
+        android:fillColor="@color/home_primary"
+        android:pathData="M15,132L125,58L235,118L345,62L455,115L565,85L685,35L685,185L15,185z" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M15,132L125,58L235,118L345,62L455,115L565,85L685,35"
+        android:strokeColor="@color/home_primary"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="4" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M15,165L125,130L235,166L345,128L455,158L565,166L685,132"
+        android:strokeColor="@color/home_expense"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="4" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M15,126a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM125,52a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM235,112a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM345,56a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM455,109a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM565,79a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM685,29a6,6 0,1 0,0 12,6 6,0 0,0 0,-12z"
+        android:strokeColor="@color/home_primary"
+        android:strokeWidth="4" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M15,159a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM125,124a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM235,160a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM345,122a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM455,152a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM565,160a6,6 0,1 0,0 12,6 6,0 0,0 0,-12zM685,126a6,6 0,1 0,0 12,6 6,0 0,0 0,-12z"
+        android:strokeColor="@color/home_expense"
+        android:strokeWidth="4" />
+</vector>

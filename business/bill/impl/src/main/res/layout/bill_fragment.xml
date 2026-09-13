@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bill_page_background"
+    android:orientation="vertical"
+    android:overScrollMode="never"
+    tools:context="com.bill.ui.BillFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="28dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginStart="@dimen/bill_page_horizontal_margin"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="@dimen/bill_page_horizontal_margin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/bill_page_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/bill_page_title"
+                android:textColor="@color/bill_page_text_primary"
+                android:textSize="@dimen/bill_page_title_size"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/bill_page_more_button"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:contentDescription="@string/bill_page_more_description"
+                android:padding="6dp"
+                android:src="@drawable/bill_page_ic_more" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginStart="@dimen/bill_page_horizontal_margin"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="@dimen/bill_page_horizontal_margin"
+            android:background="@drawable/bill_page_bg_search"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/bill_page_search_description"
+                android:src="@drawable/bill_page_ic_search" />
+
+            <EditText
+                android:id="@+id/bill_page_search_input"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/bill_page_search"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="0dp"
+                android:textColor="@color/bill_page_text_primary"
+                android:textColorHint="@color/bill_page_text_secondary"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="@dimen/bill_page_horizontal_margin"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/bill_page_horizontal_margin"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/bill_page_filter_month"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="0.9"
+                android:background="@drawable/bill_page_bg_filter_selected"
+                android:drawableEnd="@drawable/bill_page_ic_down"
+                android:drawablePadding="6dp"
+                android:drawableTint="@color/bill_page_primary"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="@string/bill_page_filter_month"
+                android:textColor="@color/bill_page_primary"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bill_page_filter_category"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1.05"
+                android:background="@drawable/bill_page_bg_filter"
+                android:drawableEnd="@drawable/bill_page_ic_down"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/bill_page_filter_category"
+                android:textColor="@color/bill_page_text_primary"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/bill_page_filter_type"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1.05"
+                android:background="@drawable/bill_page_bg_filter"
+                android:drawableEnd="@drawable/bill_page_ic_down"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/bill_page_filter_type"
+                android:textColor="@color/bill_page_text_primary"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="106dp"
+            android:layout_marginStart="@dimen/bill_page_horizontal_margin"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="@dimen/bill_page_horizontal_margin"
+            app:cardBackgroundColor="@color/bill_page_background"
+            app:cardCornerRadius="@dimen/bill_page_card_radius"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/bill_page_border"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/bill_page_month_value"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/bill_page_month"
+                        android:textColor="@color/bill_page_text_primary"
+                        android:textSize="17sp" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/bill_page_month_detail_description"
+                        android:padding="2dp"
+                        android:src="@drawable/bill_page_ic_chevron" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bill_page_income_label"
+                        android:textColor="@color/bill_page_text_secondary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/bill_page_income_amount_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/bill_page_income_amount"
+                        android:textColor="@color/bill_page_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="22dp"
+                        android:background="@color/bill_page_divider" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="22dp"
+                        android:text="@string/bill_page_expense_label"
+                        android:textColor="@color/bill_page_text_secondary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/bill_page_expense_amount_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/bill_page_expense_amount"
+                        android:textColor="@color/bill_page_expense"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:id="@+id/bill_page_legacy_section_divider"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/bill_page_search_background"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/bill_page_recent_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bill_page_horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/bill_page_date"
+            android:textColor="@color/bill_page_text_primary"
+            android:textSize="17sp"
+            android:visibility="gone" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/bill_page_recent_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bill_page_horizontal_margin"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="@dimen/bill_page_horizontal_margin"
+            app:cardBackgroundColor="@color/bill_page_background"
+            app:cardCornerRadius="@dimen/bill_page_card_radius"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/bill_page_border"
+            app:strokeWidth="1dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/bill_page_recent_row_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="16dp">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bill_page_bg_icon">
+
+                        <ImageView
+                            android:id="@+id/bill_page_recent_icon_1"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/bill_page_food_icon_description"
+                            android:src="@drawable/bill_page_ic_food" />
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_title_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/bill_page_food_title"
+                            android:textColor="@color/bill_page_text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_category_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/bill_page_food_category"
+                            android:textColor="@color/bill_page_text_secondary"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_amount_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/bill_page_food_amount"
+                            android:textColor="@color/bill_page_expense"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_time_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/bill_page_food_time"
+                            android:textColor="@color/bill_page_text_secondary"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/bill_page_recent_divider_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="72dp"
+                    android:background="@color/bill_page_divider" />
+
+                <LinearLayout
+                    android:id="@+id/bill_page_recent_row_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="16dp">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bill_page_bg_icon">
+
+                        <ImageView
+                            android:id="@+id/bill_page_recent_icon_2"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/bill_page_subway_icon_description"
+                            android:src="@drawable/bill_page_ic_subway" />
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_title_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/bill_page_subway_title"
+                            android:textColor="@color/bill_page_text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_category_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/bill_page_subway_category"
+                            android:textColor="@color/bill_page_text_secondary"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_amount_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/bill_page_subway_amount"
+                            android:textColor="@color/bill_page_expense"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_time_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/bill_page_subway_time"
+                            android:textColor="@color/bill_page_text_secondary"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/bill_page_recent_divider_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="72dp"
+                    android:background="@color/bill_page_divider" />
+
+                <LinearLayout
+                    android:id="@+id/bill_page_recent_row_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="16dp">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bill_page_bg_icon">
+
+                        <ImageView
+                            android:id="@+id/bill_page_recent_icon_3"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/bill_page_salary_icon_description"
+                            android:src="@drawable/bill_page_ic_salary" />
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_title_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/bill_page_salary_title"
+                            android:textColor="@color/bill_page_text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_category_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/bill_page_salary_category"
+                            android:textColor="@color/bill_page_text_secondary"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_amount_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/bill_page_salary_amount"
+                            android:textColor="@color/bill_page_primary"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/bill_page_recent_time_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/bill_page_salary_time"
+                            android:textColor="@color/bill_page_text_secondary"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bill_page_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingStart="@dimen/bill_page_horizontal_margin"
+            android:paddingTop="12dp"
+            android:paddingEnd="@dimen/bill_page_horizontal_margin"
+            android:paddingBottom="24dp"
+            tools:listitem="@layout/bill_item" />
+
+        <TextView
+            android:id="@+id/bill_page_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="32dp"
+            android:text="@string/bill_page_empty"
+            android:textColor="@color/bill_page_text_secondary"
+            android:textSize="15sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/bill_page_loading_more"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone"
+            app:indicatorColor="@color/bill_page_primary"
+            app:trackColor="@color/bill_page_primary_soft" />
+
+    </FrameLayout>
+
+</LinearLayout>

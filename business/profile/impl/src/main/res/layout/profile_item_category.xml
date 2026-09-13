@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@color/profile_category_background"
+    app:cardCornerRadius="@dimen/profile_category_card_radius"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/profile_category_border"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="14dp">
+
+        <ImageView
+            android:id="@+id/profile_category_item_drag"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/profile_category_drag_description"
+            android:padding="2dp"
+            android:src="@drawable/profile_category_ic_drag" />
+
+        <ImageView
+            android:id="@+id/profile_category_item_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@null"
+            android:src="@drawable/profile_category_ic_more"
+            tools:src="@drawable/profile_category_ic_food" />
+
+        <TextView
+            android:id="@+id/profile_category_item_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/profile_category_text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="餐饮" />
+
+        <ImageView
+            android:id="@+id/profile_category_item_edit"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:clickable="true"
+            android:contentDescription="@string/profile_category_edit_description"
+            android:focusable="true"
+            android:padding="2dp"
+            android:src="@drawable/profile_category_ic_edit" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

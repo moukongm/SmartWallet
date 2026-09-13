@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="budget_page_primary">#0EB58E</color>
+    <color name="budget_page_primary_soft">#E7F7F3</color>
+    <color name="budget_page_expense">#FF625C</color>
+    <color name="budget_page_orange">#FFA726</color>
+    <color name="budget_page_text_primary">#1F2124</color>
+    <color name="budget_page_text_secondary">#777A80</color>
+    <color name="budget_page_border">#E3E6E8</color>
+    <color name="budget_page_track">#EEF0F1</color>
+    <color name="budget_page_background">#FFFFFF</color>
+
+    <dimen name="budget_page_horizontal_margin">18dp</dimen>
+    <dimen name="budget_page_title_size">28sp</dimen>
+    <dimen name="budget_page_card_radius">14dp</dimen>
+
+    <string name="budget_page_title">预算管理</string>
+    <string name="budget_page_more_description">更多</string>
+    <string name="budget_page_chart_description">预算使用图表预留区域</string>
+    <string name="budget_page_chart_no_data">暂无预算数据</string>
+    <string name="budget_page_monthly_budget">本月预算</string>
+    <string name="budget_page_monthly_budget_amount">￥5000</string>
+    <string name="budget_page_used">已使用</string>
+    <string name="budget_page_used_amount">￥3440</string>
+    <string name="budget_page_remaining">剩余</string>
+    <string name="budget_page_remaining_amount">￥1560</string>
+    <string name="budget_page_status">预算使用正常</string>
+    <string name="budget_page_food">餐饮</string>
+    <string name="budget_page_food_amount">￥1050 / ￥1500</string>
+    <string name="budget_page_food_ratio">70%</string>
+    <string name="budget_page_traffic">交通</string>
+    <string name="budget_page_traffic_amount">￥400 / ￥800</string>
+    <string name="budget_page_traffic_ratio">50%</string>
+    <string name="budget_page_shopping">购物</string>
+    <string name="budget_page_shopping_amount">￥900 / ￥1000</string>
+    <string name="budget_page_shopping_ratio">90%</string>
+    <string name="budget_page_set_budget">设置预算</string>
+    <string name="budget_page_overrun_reminder">超预算提醒</string>
+    <string name="budget_page_food_icon_description">餐饮预算</string>
+    <string name="budget_page_traffic_icon_description">交通预算</string>
+    <string name="budget_page_shopping_icon_description">购物预算</string>
+    <string name="budget_dialog_title">设置预算</string>
+    <string name="budget_dialog_total_hint">本月总预算</string>
+    <string name="budget_dialog_food_hint">餐饮预算</string>
+    <string name="budget_dialog_traffic_hint">交通预算</string>
+    <string name="budget_dialog_shopping_hint">购物预算</string>
+    <string name="budget_dialog_save">保存</string>
+</resources>

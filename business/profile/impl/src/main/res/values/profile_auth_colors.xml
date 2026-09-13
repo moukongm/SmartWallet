@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="profile_auth_primary">#18C6A3</color>
+    <color name="profile_auth_primary_dark">#08AE90</color>
+    <color name="profile_auth_primary_light">#25D4B5</color>
+    <color name="profile_auth_background">#FFFFFF</color>
+    <color name="profile_auth_text_primary">#2A2B2E</color>
+    <color name="profile_auth_text_secondary">#777A7E</color>
+    <color name="profile_auth_hint">#8B8D91</color>
+    <color name="profile_auth_border">#D8DBDE</color>
+    <color name="profile_auth_icon">#6D7074</color>
+</resources>

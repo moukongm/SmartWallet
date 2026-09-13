@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_auth_login_title">欢迎回来</string>
+    <string name="profile_auth_register_title">创建账号</string>
+    <string name="profile_auth_account_hint">手机号 / 邮箱</string>
+    <string name="profile_auth_password_hint">密码</string>
+    <string name="profile_auth_password_create_hint">设置密码</string>
+    <string name="profile_auth_password_confirm_hint">确认密码</string>
+    <string name="profile_auth_login_action">登录</string>
+    <string name="profile_auth_register_action">注册</string>
+    <string name="profile_auth_register_prompt">还没有账号？ <font color="#10B697">立即注册</font></string>
+    <string name="profile_auth_agreement">我已阅读并同意 <font color="#10B697">《用户协议》</font> 和 <font color="#10B697">《隐私政策》</font></string>
+    <string name="profile_auth_security_tip">您的信息已加密，登录安全有保障</string>
+    <string name="profile_auth_login_loading">登录中…</string>
+    <string name="profile_auth_register_loading">注册中…</string>
+    <string name="profile_auth_email_required">请输入邮箱</string>
+    <string name="profile_auth_email_invalid">请输入正确的邮箱地址</string>
+    <string name="profile_auth_password_required">请输入密码</string>
+    <string name="profile_auth_password_too_short">密码长度不能少于 6 位</string>
+    <string name="profile_auth_password_confirm_required">请再次输入密码</string>
+    <string name="profile_auth_password_mismatch">两次输入的密码不一致</string>
+    <string name="profile_auth_agreement_required">请先阅读并同意用户协议和隐私政策</string>
+    <string name="profile_auth_register_verify_email">注册成功，请检查邮箱并完成验证后登录</string>
+</resources>

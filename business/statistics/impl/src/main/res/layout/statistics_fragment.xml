@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/statistics_page_background"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    tools:context="com.statistics.ui.StatisticsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/statistics_page_horizontal_margin"
+        android:paddingTop="18dp"
+        android:paddingEnd="@dimen/statistics_page_horizontal_margin"
+        android:paddingBottom="28dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/statistics_page_title"
+                android:textColor="@color/statistics_page_text_primary"
+                android:textSize="@dimen/statistics_page_title_size"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/statistics_month_selector"
+                android:layout_width="150dp"
+                android:layout_height="46dp"
+                android:background="@drawable/statistics_page_bg_month"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="10dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="@string/statistics_page_calendar_description"
+                    android:src="@drawable/statistics_page_ic_calendar" />
+
+                <TextView
+                    android:id="@+id/statistics_selected_month"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/statistics_page_month"
+                    android:textColor="@color/statistics_page_text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/statistics_page_ic_down" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/statistics_error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/statistics_page_bg_error_message"
+            android:padding="10dp"
+            android:textColor="@color/statistics_page_expense"
+            android:textSize="14sp"
+            android:visibility="gone"
+            tools:text="统计数据加载失败"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="16dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/statistics_page_bg_summary_green"
+                android:padding="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/statistics_budget_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/statistics_page_total_income"
+                        android:textColor="@color/statistics_page_text_primary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/statistics_income_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/statistics_page_income_amount"
+                        android:textColor="@color/statistics_page_text_primary"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="bottom|end"
+                    android:contentDescription="@string/statistics_page_income_icon_description"
+                    android:src="@drawable/statistics_page_ic_income" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/statistics_page_bg_summary_red"
+                android:padding="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/statistics_budget_remaining"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/statistics_page_total_expense"
+                        android:textColor="@color/statistics_page_text_primary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/statistics_expense_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/statistics_page_expense_amount"
+                        android:textColor="@color/statistics_page_text_primary"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="bottom|end"
+                    android:contentDescription="@string/statistics_page_expense_icon_description"
+                    android:src="@drawable/statistics_page_ic_expense" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/statistics_page_bg_summary_green"
+                android:padding="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/statistics_page_balance"
+                        android:textColor="@color/statistics_page_text_primary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/statistics_balance_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/statistics_page_balance_amount"
+                        android:textColor="@color/statistics_page_text_primary"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="bottom|end"
+                    android:contentDescription="@string/statistics_page_balance_icon_description"
+                    android:src="@drawable/statistics_page_ic_wallet" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/statistics_budget_entry"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/statistics_page_budget_entry_description"
+            app:cardBackgroundColor="@color/statistics_page_primary_soft"
+            app:cardCornerRadius="@dimen/statistics_page_card_radius"
+            app:cardElevation="0dp"
+            app:strokeColor="#D5EEE8"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="12dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/statistics_page_ic_budget_status" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/statistics_page_budget_status"
+                        android:textColor="@color/statistics_page_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/statistics_page_budget_remaining"
+                        android:textColor="@color/statistics_page_text_secondary"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/statistics_page_ic_chevron" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="266dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/statistics_page_background"
+            app:cardCornerRadius="@dimen/statistics_page_card_radius"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/statistics_page_border"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="14dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/statistics_page_category_title"
+                    android:textColor="@color/statistics_page_text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="198dp"
+                        android:layout_height="198dp">
+
+                        <com.example.uikit.chart.view.WalletDonutChartView
+                            android:id="@+id/statistics_category_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:walletChartAnimationDuration="300"
+                            app:walletChartInteractive="false"
+                            app:walletChartNoDataText="@string/statistics_page_no_category_data"
+                            app:walletChartShowLegend="false" />
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/statistics_category_row_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:id="@+id/statistics_category_dot_1"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/statistics_page_bg_dot_green" />
+
+                            <TextView
+                                android:id="@+id/statistics_category_name_1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/statistics_page_food"
+                                android:textColor="@color/statistics_page_text_primary"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/statistics_category_ratio_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/statistics_page_food_ratio"
+                                android:textColor="@color/statistics_page_text_primary"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/statistics_category_row_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:id="@+id/statistics_category_dot_2"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/statistics_page_bg_dot_red" />
+
+                            <TextView
+                                android:id="@+id/statistics_category_name_2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/statistics_page_traffic"
+                                android:textColor="@color/statistics_page_text_primary"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/statistics_category_ratio_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/statistics_page_traffic_ratio"
+                                android:textColor="@color/statistics_page_text_primary"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/statistics_category_row_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:id="@+id/statistics_category_dot_3"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/statistics_page_bg_dot_orange" />
+
+                            <TextView
+                                android:id="@+id/statistics_category_name_3"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/statistics_page_shopping"
+                                android:textColor="@color/statistics_page_text_primary"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/statistics_category_ratio_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/statistics_page_shopping_ratio"
+                                android:textColor="@color/statistics_page_text_primary"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/statistics_category_row_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:id="@+id/statistics_category_dot_4"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/statistics_page_bg_dot_blue" />
+
+                            <TextView
+                                android:id="@+id/statistics_category_name_4"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/statistics_page_other"
+                                android:textColor="@color/statistics_page_text_primary"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/statistics_category_ratio_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/statistics_page_other_ratio"
+                                android:textColor="@color/statistics_page_text_primary"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="282dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/statistics_page_background"
+            app:cardCornerRadius="@dimen/statistics_page_card_radius"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/statistics_page_border"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="14dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/statistics_page_trend_title"
+                        android:textColor="@color/statistics_page_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/statistics_trend_day"
+                        android:layout_width="58dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/statistics_page_bg_tab"
+                        android:gravity="center"
+                        android:text="@string/statistics_page_day"
+                        android:textColor="@color/statistics_page_text_primary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/statistics_trend_month"
+                        android:layout_width="58dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/statistics_page_bg_tab_selected"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:text="@string/statistics_page_month_tab"
+                        android:textColor="@color/statistics_page_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/statistics_trend_year"
+                        android:layout_width="58dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/statistics_page_bg_tab"
+                        android:gravity="center"
+                        android:text="@string/statistics_page_year"
+                        android:textColor="@color/statistics_page_text_primary"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <com.example.uikit.chart.view.WalletLineChartView
+                    android:id="@+id/statistics_trend_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    app:walletChartAnimationDuration="300"
+                    app:walletChartInteractive="false"
+                    app:walletChartNoDataText="@string/statistics_page_no_trend_data"
+                    app:walletChartShowLegend="false" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>

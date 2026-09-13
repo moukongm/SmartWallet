@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <path
+        android:fillColor="@color/budget_page_expense"
+        android:pathData="M24,0A24,24 0,1 0,24 48A24,24 0,1 0,24 0" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M15,10H33C35,10 36,12 36,15V31C36,34 34,36 31,36H17C14,36 12,34 12,31V15C12,12 13,10 15,10ZM16,15H32V26H16ZM18,31H18.2M29.8,31H30M18,36L15,40M30,36L33,40"
+        android:strokeColor="@android:color/white"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="2" />
+</vector>

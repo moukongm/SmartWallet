@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WalletChartView">
+        <attr name="walletChartNoDataText" format="string" />
+        <attr name="walletChartInteractive" format="boolean" />
+        <attr name="walletChartShowLegend" format="boolean" />
+        <attr name="walletChartAnimationDuration" format="integer" />
+    </declare-styleable>
+</resources>

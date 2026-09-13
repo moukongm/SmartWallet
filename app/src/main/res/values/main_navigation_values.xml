@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_nav_primary">#08B68F</color>
+    <color name="app_nav_primary_dark">#029A79</color>
+    <color name="app_nav_inactive">#737679</color>
+
+    <string name="app_nav_home">首页</string>
+    <string name="app_nav_bill">账单</string>
+    <string name="app_nav_add">记一笔</string>
+    <string name="app_nav_statistics">统计</string>
+    <string name="app_nav_profile">我的</string>
+</resources>

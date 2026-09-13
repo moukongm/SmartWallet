@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_greeting">早上好，林晓 👋</string>
+    <string name="home_greeting_subtitle">今天也要理性消费</string>
+    <string name="home_avatar_description">用户头像</string>
+    <string name="home_notification_description">通知</string>
+
+    <string name="home_today_expense">今日消费</string>
+    <string name="home_today_expense_amount">¥85.00</string>
+    <string name="home_today_income">今日收入</string>
+    <string name="home_today_income_amount">¥0.00</string>
+    <string name="home_remaining_budget">剩余预算</string>
+    <string name="home_remaining_budget_amount">¥1560</string>
+
+    <string name="home_month_balance">本月余额</string>
+    <string name="home_month_balance_amount">¥8560</string>
+    <string name="home_income">收入</string>
+    <string name="home_income_amount">¥12000</string>
+    <string name="home_expense">支出</string>
+    <string name="home_expense_amount">¥3440</string>
+
+    <string name="home_trend_title">近7日消费趋势</string>
+    <string name="home_trend_income">收入</string>
+    <string name="home_trend_expense">支出</string>
+    <string name="home_chart_3000">3000</string>
+    <string name="home_chart_2000">2000</string>
+    <string name="home_chart_1000">1000</string>
+    <string name="home_chart_0">0</string>
+    <string name="home_date_1">7/9</string>
+    <string name="home_date_2">7/10</string>
+    <string name="home_date_3">7/11</string>
+    <string name="home_date_4">7/12</string>
+    <string name="home_date_5">7/13</string>
+    <string name="home_date_6">7/14</string>
+    <string name="home_date_7">7/15</string>
+
+    <string name="home_recent_bills">最近账单</string>
+    <string name="home_view_all">查看全部</string>
+    <string name="home_bill_lunch">午餐</string>
+    <string name="home_bill_food">餐饮</string>
+    <string name="home_bill_lunch_amount">-¥35</string>
+    <string name="home_bill_lunch_time">今天 12:30</string>
+    <string name="home_bill_subway">地铁</string>
+    <string name="home_bill_transport">交通</string>
+    <string name="home_bill_subway_amount">-¥6</string>
+    <string name="home_bill_subway_time">今天 08:15</string>
+    <string name="home_bill_salary">工资</string>
+    <string name="home_bill_income">收入</string>
+    <string name="home_bill_salary_amount">+¥8000</string>
+    <string name="home_bill_salary_time">昨天 09:00</string>
+
+    <string name="home_value_unavailable">--</string>
+    <string name="home_no_trend_data">暂无近7日账单</string>
+    <string name="home_no_recent_bills">暂无账单</string>
+</resources>
